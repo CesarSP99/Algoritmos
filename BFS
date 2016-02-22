@@ -1,0 +1,41 @@
+#include <iostream>
+#include <queue>
+#include <cstring>
+#include <vector>
+using namespace std;
+const int MAXN = 100005;
+vector < vector <int> > g;
+int dist[MAXN];
+
+void bfs(int s) {
+	queue <int> q;
+	int v;
+	q.push(s);
+	memset(dist, -1, sizeof dist);
+	dist[s] = 0;
+	while(!q.empty()) {
+		s = q.front();
+		q.pop();
+		for(int i = 0; i < (int)g[s].size(); ++i) {
+			v = g[s][i];
+			
+			if(dist[v] != -1)
+				continue;
+			dist[v] = dist[s] + 1;
+			q.push(v);
+		}
+	}
+}
+
+int main() {
+	int v, e, s, f; // vertices, aristas, start y finish
+	cin >> v >> e;
+	g.assign(v + 5, vector <int>());
+	for(int i = 0; i < e; ++i) {
+		cin >> s >> f;
+		g[s].push_back(f);
+		g[f].push_back(s);
+	}
+	bfs(1); // llamamos a bfs desde el nodo 1, podemos llamar desde cualquier nodo.
+	return 0;
+}
