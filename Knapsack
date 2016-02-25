@@ -5,6 +5,7 @@ int maxn(int a, int b) { return (a > b) ? a : b; }
 int g[100], p[100];
 int mem[100][100];
 int n;
+
 int main()
 {
     int w;
