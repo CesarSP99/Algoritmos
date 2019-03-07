@@ -18,7 +18,9 @@ void bfs(int s) {
 		q.pop();
 		for(int i = 0; i < (int)g[s].size(); ++i) {
 			v = g[s][i];
-			if(dist[v] != -1) continue;
+			
+			if(dist[v] != -1)
+				continue;
 			dist[v] = dist[s] + 1;
 			q.push(v);
 		}
